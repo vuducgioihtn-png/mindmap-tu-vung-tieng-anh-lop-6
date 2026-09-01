@@ -1,0 +1,6 @@
+{
+  "name": "Mindmap từ vựng lớp 6",
+  "description": "Ứng dụng web học từ vựng tiếng Anh lớp 6 theo sơ đồ tư duy sinh động với game ôn tập, flashcards, bảng xếp hạng, phát âm chuẩn và linh vật đồng hành đáng yêu.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
