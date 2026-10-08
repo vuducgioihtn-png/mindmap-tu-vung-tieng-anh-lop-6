@@ -3,6 +3,7 @@ import { ActiveTab, UserProfile } from '../types';
 import { Volume2, VolumeX, Flame, Award, Coins, Sparkles, UserCheck } from 'lucide-react';
 import { sound } from '../utils/audio';
 import { AVATAR_LIST, saveUser } from '../utils/storage';
+import { FemaleVoiceModal } from './FemaleVoiceModal';
 
 interface HeaderProps {
   activeTab: ActiveTab;
@@ -22,6 +23,7 @@ export const Header: React.FC<HeaderProps> = ({
   setIsMuted,
 }) => {
   const [showAvatarPicker, setShowAvatarPicker] = useState(false);
+  const [showVoiceModal, setShowVoiceModal] = useState(false);
   const [editingName, setEditingName] = useState(false);
   const [tempName, setTempName] = useState(user.name);
 
@@ -144,6 +146,21 @@ export const Header: React.FC<HeaderProps> = ({
               {isMuted ? <VolumeX className="w-4 h-4" /> : <Volume2 className="w-4 h-4" />}
             </button>
 
+            {/* Female Voice Selector / Settings Trigger */}
+            <button
+              id="female-voice-btn"
+              onClick={() => {
+                setShowVoiceModal(true);
+                sound.playPop();
+              }}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-linear-to-r from-rose-50 to-pink-50 hover:from-rose-100 hover:to-pink-100 text-rose-700 border border-rose-200/80 rounded-full font-bold text-xs transition-all active:scale-95 shadow-2xs"
+              title="Cài đặt giọng nữ tiếng Anh (Vang sáng, ngân hay - Lọc sạch giọng khác)"
+            >
+              <span className="text-sm">👩‍🏫</span>
+              <span className="hidden sm:inline">Giọng Nữ Vang Sáng</span>
+              <span className="sm:hidden">Giọng Nữ</span>
+            </button>
+
             {/* Avatar & Profile Trigger */}
             <div className="relative">
               <button
@@ -259,6 +276,12 @@ export const Header: React.FC<HeaderProps> = ({
           })}
         </nav>
       </div>
+
+      {/* Female Voice Settings Modal */}
+      <FemaleVoiceModal
+        isOpen={showVoiceModal}
+        onClose={() => setShowVoiceModal(false)}
+      />
     </header>
   );
 };

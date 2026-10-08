@@ -146,7 +146,7 @@ export const WordDetailModal: React.FC<WordDetailModalProps> = ({
               className="flex-1 py-2.5 px-4 bg-orange-500 hover:bg-orange-600 text-white rounded-xl font-black text-sm sm:text-base shadow-md flex items-center justify-center gap-2 active:scale-98 transition-all"
             >
               <Volume2 className="w-5 h-5" />
-              <span>Nghe phát âm chuẩn</span>
+              <span>Nghe giọng nữ chuẩn (Vang sáng)</span>
             </button>
 
             <button

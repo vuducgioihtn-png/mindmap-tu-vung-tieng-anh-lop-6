@@ -354,7 +354,7 @@ export const FlashcardsView: React.FC<FlashcardsViewProps> = ({
                     className="py-2.5 px-6 bg-orange-500 hover:bg-orange-600 text-white rounded-2xl font-black text-sm sm:text-base shadow-md flex items-center gap-2 active:scale-95 transition-all"
                   >
                     <Volume2 className="w-5 h-5" />
-                    <span>Nghe Đọc Từ</span>
+                    <span>Nghe Đọc (Giọng Nữ)</span>
                   </button>
                 </div>
               </motion.div>
