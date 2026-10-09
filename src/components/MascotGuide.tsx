@@ -27,6 +27,7 @@ const MASCOTS: Mascot[] = [
     quotes: [
       'Chào bạn nhỏ! Mỗi ngày học 5 từ vựng là bạn sẽ siêu đẳng tiếng Anh luôn đó! 🚀',
       'Đừng quên bấm vào biểu tượng chiếc loa 🔊 để nghe phát âm chuẩn bản xứ nha!',
+      'Thử ngay tính năng "Nghe & Viết Từ" ✍️ để rèn luyện chính tả siêu đỉnh nhé!',
       'Bạn làm rất tốt! Hãy thử chơi game Bắn Bóng để kiểm tra trí nhớ nhé!',
       'Ghi nhớ bằng sơ đồ tư duy giúp não bộ chúng mình nhớ từ nhanh gấp 3 lần đấy!',
       'Hãy lật thẻ ghi nhớ và thử đoán nghĩa trước khi xem kết quả nhé! 💡',

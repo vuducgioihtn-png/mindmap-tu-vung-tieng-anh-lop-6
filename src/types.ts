@@ -78,5 +78,5 @@ export interface AchievementBadge {
   color: string;
 }
 
-export type ActiveTab = 'mindmap' | 'flashcards' | 'games' | 'leaderboard' | 'progress';
-export type GameMode = 'bubble' | 'spelling' | 'quiz' | null;
+export type ActiveTab = 'mindmap' | 'flashcards' | 'dictation' | 'games' | 'leaderboard' | 'progress';
+export type GameMode = 'bubble' | 'spelling' | 'quiz' | 'dictation' | null;

@@ -5,6 +5,7 @@ import { UserProfile, GameMode } from '../../types';
 import { BubblePopGame } from './BubblePopGame';
 import { SpellingQuestGame } from './SpellingQuestGame';
 import { SpeedQuizGame } from './SpeedQuizGame';
+import { DictationView } from '../DictationView';
 import { Trophy, Play, Sparkles, Flame, Zap, Award } from 'lucide-react';
 import { sound } from '../../utils/audio';
 
@@ -23,6 +24,18 @@ export const GamesHub: React.FC<GamesHubProps> = ({
   const [activeGameMode, setActiveGameMode] = useState<GameMode>(null);
 
   const gameList = [
+    {
+      id: 'dictation' as const,
+      title: 'Nghe Viết Chính Tả',
+      subtitle: 'Listening Dictation Master',
+      icon: '✍️',
+      color: 'bg-emerald-600 hover:bg-emerald-700',
+      bgColor: 'border-emerald-200 hover:border-emerald-400',
+      textColor: 'text-emerald-700',
+      highScore: user.masteredWordIds.length * 20,
+      description: 'Luyện nghe phát âm giọng nữ chuẩn và tự gõ lại toàn bộ từ hoặc bổ sung các ký tự còn thiếu!',
+      badge: 'Mới Nhất ★',
+    },
     {
       id: 'bubble' as const,
       title: 'Bắn Bóng Từ Vựng',
@@ -60,6 +73,29 @@ export const GamesHub: React.FC<GamesHubProps> = ({
       badge: 'Kịch Tính',
     },
   ];
+
+  if (activeGameMode === 'dictation') {
+    return (
+      <div className="space-y-4">
+        <div className="flex items-center justify-between bg-white px-4 py-2.5 rounded-2xl border-2 border-amber-200">
+          <span className="font-['Paytone_One'] text-slate-700 text-sm flex items-center gap-2">
+            ✍️ Chế Độ: Nghe Viết Từ Vựng
+          </span>
+          <button
+            onClick={() => setActiveGameMode(null)}
+            className="px-4 py-1.5 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl font-bold text-xs border border-slate-300 transition-all"
+          >
+            ← Quay Lại Đấu Trường
+          </button>
+        </div>
+        <DictationView
+          initialUnitId={selectedUnitId}
+          user={user}
+          setUser={setUser}
+        />
+      </div>
+    );
+  }
 
   if (activeGameMode === 'bubble') {
     return (
@@ -133,7 +169,7 @@ export const GamesHub: React.FC<GamesHubProps> = ({
       </div>
 
       {/* Game Cards Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5">
         {gameList.map((game, idx) => (
           <motion.div
             key={game.id}

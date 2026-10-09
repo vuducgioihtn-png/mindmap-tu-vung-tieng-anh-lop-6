@@ -57,6 +57,7 @@ export const Header: React.FC<HeaderProps> = ({
   const tabs: Array<{ id: ActiveTab; label: string; icon: string; badge?: string }> = [
     { id: 'mindmap', label: 'Sơ Đồ Tư Duy', icon: '🗺️' },
     { id: 'flashcards', label: 'Thẻ Ghi Nhớ', icon: '🃏' },
+    { id: 'dictation', label: 'Nghe & Viết Từ', icon: '✍️', badge: 'Mới' },
     { id: 'games', label: 'Đấu Trường Game', icon: '🎮', badge: 'Hot' },
     { id: 'leaderboard', label: 'Bảng Xếp Hạng', icon: '🏆' },
     { id: 'progress', label: 'Tiến Độ Hằng Ngày', icon: '📈' },

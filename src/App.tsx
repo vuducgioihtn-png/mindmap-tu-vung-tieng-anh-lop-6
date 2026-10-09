@@ -6,6 +6,7 @@ import { MascotGuide } from './components/MascotGuide';
 import { MindMapViewer } from './components/MindMapViewer';
 import { FlashcardsView } from './components/FlashcardsView';
 import { GamesHub } from './components/games/GamesHub';
+import { DictationView } from './components/DictationView';
 import { LeaderboardView } from './components/LeaderboardView';
 import { DailyProgressView } from './components/DailyProgressView';
 import { WordDetailModal } from './components/WordDetailModal';
@@ -38,6 +39,12 @@ export default function App() {
     sound.playPop();
   };
 
+  const handleStartDictationWithUnit = (unitId: number) => {
+    setSelectedUnitId(unitId);
+    setActiveTab('dictation');
+    sound.playPop();
+  };
+
   return (
     <div className="min-h-screen bg-[#FFFBEB] bg-[radial-gradient(#FEF3C7_1.2px,transparent_1.2px)] [background-size:24px_24px] text-slate-800 flex flex-col font-['Nunito',sans-serif]">
       {/* Top Application Header */}
@@ -55,7 +62,7 @@ export default function App() {
         {/* Mascot Companion Guide Banner */}
         <MascotGuide
           currentUnitTitle={
-            activeTab === 'mindmap' || activeTab === 'flashcards'
+            activeTab === 'mindmap' || activeTab === 'flashcards' || activeTab === 'dictation'
               ? `${currentUnit.title} (${currentUnit.titleVi})`
               : undefined
           }
@@ -71,11 +78,21 @@ export default function App() {
               user={user}
               onStartGameWithUnit={handleStartGameWithUnit}
               onStartFlashcardsWithUnit={handleStartFlashcardsWithUnit}
+              onStartDictationWithUnit={handleStartDictationWithUnit}
             />
           )}
 
           {activeTab === 'flashcards' && (
             <FlashcardsView
+              initialUnitId={selectedUnitId}
+              user={user}
+              setUser={setUser}
+              onOpenWordDetail={setSelectedWord}
+            />
+          )}
+
+          {activeTab === 'dictation' && (
+            <DictationView
               initialUnitId={selectedUnitId}
               user={user}
               setUser={setUser}

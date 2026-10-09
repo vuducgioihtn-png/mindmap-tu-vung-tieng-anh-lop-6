@@ -12,6 +12,7 @@ interface MindMapViewerProps {
   user: UserProfile;
   onStartGameWithUnit: (unitId: number) => void;
   onStartFlashcardsWithUnit: (unitId: number) => void;
+  onStartDictationWithUnit?: (unitId: number) => void;
 }
 
 export const MindMapViewer: React.FC<MindMapViewerProps> = ({
@@ -21,6 +22,7 @@ export const MindMapViewer: React.FC<MindMapViewerProps> = ({
   user,
   onStartGameWithUnit,
   onStartFlashcardsWithUnit,
+  onStartDictationWithUnit,
 }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [filterMode, setFilterMode] = useState<'all' | 'unlearned' | 'mastered'>('all');
@@ -179,6 +181,14 @@ export const MindMapViewer: React.FC<MindMapViewerProps> = ({
 
           {/* Practice shortcuts */}
           <div className="flex flex-wrap items-center gap-2">
+            {onStartDictationWithUnit && (
+              <button
+                onClick={() => onStartDictationWithUnit(currentUnit.id)}
+                className="px-4 py-2.5 bg-emerald-500 hover:bg-emerald-600 text-white font-black text-xs sm:text-sm rounded-2xl shadow-md flex items-center gap-1.5 active:scale-95 transition-all border border-emerald-300"
+              >
+                <span>✍️</span> Nghe & Viết Unit Này
+              </button>
+            )}
             <button
               onClick={() => onStartFlashcardsWithUnit(currentUnit.id)}
               className="px-4 py-2.5 bg-white text-orange-600 hover:bg-amber-50 font-black text-xs sm:text-sm rounded-2xl shadow-md flex items-center gap-1.5 active:scale-95 transition-all"
